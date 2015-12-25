@@ -1,0 +1,21 @@
+#MyEclipse Hibernate Properties
+#Tue Oct 20 10:53:05 CST 2015
+genBasicCompId=false
+sessionFactoryName=com.huishou.util.HibernateSessionFactory
+profile=
+daoSFId=
+jndiPath=
+detectM2M=false
+reStrategyClass=
+detectO2O=false
+springDaoFile=
+useJavaTypes=true
+keyGenerator=
+genVersionTag=false
+sessionFactoryId=
+basePersistenceClass=
+genAnnotations=false
+reSettingsFile=/huishou/hibernate.reveng.xml
+configFile=/huishou/src/hibernate.cfg.xml
+createConfigFile=true
+baseDaoClass=com.huishou.dao.BaseHibernateDAO

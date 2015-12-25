@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  
+  <display-name>huishou</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- zh-cn encoding -->
+    <filter>  
+		<filter-name>characterEncoding</filter-name>  
+		<filter-class>com.huishou.util.CharacterEncodingFilter</filter-class>  
+	</filter>  
+	<filter-mapping>  
+	<filter-name>characterEncoding</filter-name>  
+		<url-pattern>/*</url-pattern>  
+	</filter-mapping> 
+  
+	 <filter>
+        <filter-name>struts-cleanup</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ActionContextCleanUp</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>struts-cleanup</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+	
+  
+  <servlet>
+    <servlet-name>weixinServlet</servlet-name>
+    <servlet-class>com.huishou.servlet.WeixinServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>weixinServlet</servlet-name>
+    <url-pattern>/wx.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.huishou.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  
+  
+  <filter>
+    <filter-name>struts2</filter-name>
+    <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>struts2</filter-name>
+    <url-pattern>*.action</url-pattern>
+  </filter-mapping>
+  
+  <!-- 控制器中的异常处理 -->
+	<!-- 403 禁止访问 -->
+	<error-page>
+		<error-code>403</error-code>
+		<location>/error/403.htm</location>
+	</error-page>
+
+	<!-- 404 未找到 访问的资源不存在 -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/404.htm</location>
+	</error-page>
+
+	<!-- 500 内部服务器错误 -->
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/500.htm</location>
+	</error-page>
+
+	<!-- 内部服务器错误 空指针异常 -->
+	<error-page>
+		<exception-type>java.lang.NullPointerException</exception-type>
+		<location>/error/nullPoint.htm</location>
+	</error-page>
+
+	<!-- 内部服务器错误 顶层父类异常，捕获所有未配置的异常 -->
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/error/error.htm</location>
+	</error-page>
+  
+</web-app>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+	<package name="default" namespace="/" extends="json-default,struts-default">
+	    
+	<action name="order" class="com.huishou.action.OrderAction" method="order">
+		<result name="success" type="json"><param name="root">result</param></result>
+	</action>
+	
+	<action name="getorder" class="com.huishou.action.OrderAction" method="getorder">
+		<result name="success" type="json"><param name="root">result</param></result>
+	</action>
+	
+	<action name="receive" class="com.huishou.action.OrderAction" method="receive">
+		<result name="success" type="chain">getorder</result>
+	</action>
+	
+	<action name="done" class="com.huishou.action.OrderAction" method="done">
+		<result name="success" type="chain">getorder</result>
+	</action>
+	
+	<action name="cancel" class="com.huishou.action.OrderAction" method="cancel">
+		<result name="success" type="chain">getorder</result>
+	</action>
+	
+	</package>
+</struts>    
